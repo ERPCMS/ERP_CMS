@@ -2073,7 +2073,6 @@
     <Content Include="Admin\Settings\ChangePassword.aspx" />
     <Content Include="Admin\Users\Default.aspx" />
     <Content Include="Admin\Users\ListUsers.aspx" />
-    <Content Include="Check.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -2308,13 +2307,6 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Check.aspx.cs">
-      <DependentUpon>Check.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Check.aspx.designer.cs">
-      <DependentUpon>Check.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Common\EncryptionHelper.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
