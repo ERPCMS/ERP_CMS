@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e90dda4d090c444e94eed02b6adbdb7d" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="ERP_CMSModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ERP_CMSModel.MenuPanel" Width="1.5" PointX="3.375" PointY="1.5" />
+        <EntityTypeShape EntityType="ERP_CMSModel.PageRight" Width="1.5" PointX="10.125" PointY="1.375" />
+        <EntityTypeShape EntityType="ERP_CMSModel.UserRight" Width="1.5" PointX="12.375" PointY="1" />
+        <AssociationConnector Association="ERP_CMSModel.FK__UserRight__PageR__25869641" />
+        <AssociationConnector Association="ERP_CMSModel.FK__UserRight__UserI__24927208" />
+        <EntityTypeShape EntityType="ERP_CMSModel.UserLink" Width="1.5" PointX="10.125" PointY="4.375" />
+        <AssociationConnector Association="ERP_CMSModel.FK__UserLinks__UserI__2E1BDC42" />
+        <EntityTypeShape EntityType="ERP_CMSModel.MenuLink" Width="1.5" PointX="7.875" PointY="0.875" />
+        <AssociationConnector Association="ERP_CMSModel.FK__UserLinks__MenuL__2F10007B" />
+        <AssociationConnector Association="ERP_CMSModel.FK_MenuLinks_MenuLinks" />
+        <AssociationConnector Association="ERP_CMSModel.FK_PageRights_MenuLinks" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Menu" Width="1.5" PointX="5.625" PointY="1.25" />
+        <AssociationConnector Association="ERP_CMSModel.FK_MenuLinks_Menus" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Menus__PanelID__300424B4" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

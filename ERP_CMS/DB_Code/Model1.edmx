@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ERP_CMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MenuLinks">
+          <Key>
+            <PropertyRef Name="MenuLinkID" />
+          </Key>
+          <Property Name="MenuLinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuLinkText" Type="nvarchar" MaxLength="100" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="PageURL" Type="nvarchar" MaxLength="250" />
+          <Property Name="DisplayOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="MenuPanels">
+          <Key>
+            <PropertyRef Name="PanelID" />
+          </Key>
+          <Property Name="PanelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PanelTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="DisplayOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="Menus">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="PanelID" Type="int" />
+          <Property Name="DisplayOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="PageRights">
+          <Key>
+            <PropertyRef Name="PageRightID" />
+          </Key>
+          <Property Name="PageRightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="MenuLinkID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserLinks">
+          <Key>
+            <PropertyRef Name="UserLinkID" />
+          </Key>
+          <Property Name="UserLinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="MenuLinkID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRights">
+          <Key>
+            <PropertyRef Name="UserRightID" />
+          </Key>
+          <Property Name="UserRightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageRightID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Menus__PanelID__300424B4">
+          <End Role="MenuPanels" Type="Self.MenuPanels" Multiplicity="0..1" />
+          <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuPanels">
+              <PropertyRef Name="PanelID" />
+            </Principal>
+            <Dependent Role="Menus">
+              <PropertyRef Name="PanelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserLinks__MenuL__2F10007B">
+          <End Role="MenuLinks" Type="Self.MenuLinks" Multiplicity="0..1" />
+          <End Role="UserLinks" Type="Self.UserLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLinks">
+              <PropertyRef Name="MenuLinkID" />
+            </Principal>
+            <Dependent Role="UserLinks">
+              <PropertyRef Name="MenuLinkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserLinks__UserI__2E1BDC42">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserLinks" Type="Self.UserLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserLinks">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRight__PageR__25869641">
+          <End Role="PageRights" Type="Self.PageRights" Multiplicity="0..1" />
+          <End Role="UserRights" Type="Self.UserRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageRights">
+              <PropertyRef Name="PageRightID" />
+            </Principal>
+            <Dependent Role="UserRights">
+              <PropertyRef Name="PageRightID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRight__UserI__24927208">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="UserRights" Type="Self.UserRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRights">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuLinks_MenuLinks">
+          <End Role="MenuLinks" Type="Self.MenuLinks" Multiplicity="1" />
+          <End Role="MenuLinks1" Type="Self.MenuLinks" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLinks">
+              <PropertyRef Name="MenuLinkID" />
+            </Principal>
+            <Dependent Role="MenuLinks1">
+              <PropertyRef Name="MenuLinkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuLinks_Menus">
+          <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+          <End Role="MenuLinks" Type="Self.MenuLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menus">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="MenuLinks">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PageRights_MenuLinks">
+          <End Role="MenuLinks" Type="Self.MenuLinks" Multiplicity="0..1" />
+          <End Role="PageRights" Type="Self.PageRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLinks">
+              <PropertyRef Name="MenuLinkID" />
+            </Principal>
+            <Dependent Role="PageRights">
+              <PropertyRef Name="MenuLinkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_GetPageRightsByUserAndMenuLinkID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+          <Parameter Name="menuLinkID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetUserAssignedRights" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetUserNonAssignedRights" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ERP_CMSModelStoreContainer">
+          <EntitySet Name="MenuLinks" EntityType="Self.MenuLinks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuPanels" EntityType="Self.MenuPanels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageRights" EntityType="Self.PageRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLinks" EntityType="Self.UserLinks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRights" EntityType="Self.UserRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Menus__PanelID__300424B4" Association="Self.FK__Menus__PanelID__300424B4">
+            <End Role="MenuPanels" EntitySet="MenuPanels" />
+            <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserLinks__MenuL__2F10007B" Association="Self.FK__UserLinks__MenuL__2F10007B">
+            <End Role="MenuLinks" EntitySet="MenuLinks" />
+            <End Role="UserLinks" EntitySet="UserLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserLinks__UserI__2E1BDC42" Association="Self.FK__UserLinks__UserI__2E1BDC42">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserLinks" EntitySet="UserLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRight__PageR__25869641" Association="Self.FK__UserRight__PageR__25869641">
+            <End Role="PageRights" EntitySet="PageRights" />
+            <End Role="UserRights" EntitySet="UserRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRight__UserI__24927208" Association="Self.FK__UserRight__UserI__24927208">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRights" EntitySet="UserRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuLinks_MenuLinks" Association="Self.FK_MenuLinks_MenuLinks">
+            <End Role="MenuLinks" EntitySet="MenuLinks" />
+            <End Role="MenuLinks1" EntitySet="MenuLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuLinks_Menus" Association="Self.FK_MenuLinks_Menus">
+            <End Role="Menus" EntitySet="Menus" />
+            <End Role="MenuLinks" EntitySet="MenuLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PageRights_MenuLinks" Association="Self.FK_PageRights_MenuLinks">
+            <End Role="MenuLinks" EntitySet="MenuLinks" />
+            <End Role="PageRights" EntitySet="PageRights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERP_CMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRights" Relationship="ERP_CMSModel.FK__UserRight__UserI__24927208" FromRole="User" ToRole="UserRight" />
+          <NavigationProperty Name="UserLinks" Relationship="ERP_CMSModel.FK__UserLinks__UserI__2E1BDC42" FromRole="User" ToRole="UserLink" />
+        </EntityType>
+        <EntityContainer Name="ERP_CMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="MenuPanels" EntityType="ERP_CMSModel.MenuPanel" />
+          <EntitySet Name="PageRights" EntityType="ERP_CMSModel.PageRight" />
+          <EntitySet Name="UserRights" EntityType="ERP_CMSModel.UserRight" />
+          <AssociationSet Name="FK__UserRight__PageR__25869641" Association="ERP_CMSModel.FK__UserRight__PageR__25869641">
+            <End Role="PageRight" EntitySet="PageRights" />
+            <End Role="UserRight" EntitySet="UserRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRight__UserI__24927208" Association="ERP_CMSModel.FK__UserRight__UserI__24927208">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRight" EntitySet="UserRights" />
+          </AssociationSet>
+          <EntitySet Name="UserLinks" EntityType="ERP_CMSModel.UserLink" />
+          <AssociationSet Name="FK__UserLinks__UserI__2E1BDC42" Association="ERP_CMSModel.FK__UserLinks__UserI__2E1BDC42">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserLink" EntitySet="UserLinks" />
+          </AssociationSet>
+          <EntitySet Name="MenuLinks" EntityType="ERP_CMSModel.MenuLink" />
+          <AssociationSet Name="FK__UserLinks__MenuL__2F10007B" Association="ERP_CMSModel.FK__UserLinks__MenuL__2F10007B">
+            <End Role="MenuLink" EntitySet="MenuLinks" />
+            <End Role="UserLink" EntitySet="UserLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuLinks_MenuLinks" Association="ERP_CMSModel.FK_MenuLinks_MenuLinks">
+            <End Role="MenuLink" EntitySet="MenuLinks" />
+            <End Role="MenuLink1" EntitySet="MenuLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PageRights_MenuLinks" Association="ERP_CMSModel.FK_PageRights_MenuLinks">
+            <End Role="MenuLink" EntitySet="MenuLinks" />
+            <End Role="PageRight" EntitySet="PageRights" />
+          </AssociationSet>
+          <EntitySet Name="Menus" EntityType="ERP_CMSModel.Menu" />
+          <AssociationSet Name="FK_MenuLinks_Menus" Association="ERP_CMSModel.FK_MenuLinks_Menus">
+            <End Role="Menu" EntitySet="Menus" />
+            <End Role="MenuLink" EntitySet="MenuLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menus__PanelID__300424B4" Association="ERP_CMSModel.FK__Menus__PanelID__300424B4">
+            <End Role="MenuPanel" EntitySet="MenuPanels" />
+            <End Role="Menu" EntitySet="Menus" />
+          </AssociationSet>
+          <FunctionImport Name="sp_GetPageRightsByUserAndMenuLinkID" ReturnType="Collection(ERP_CMSModel.sp_GetPageRightsByUserAndMenuLinkID_Result)">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="menuLinkID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetUserAssignedRights" ReturnType="Collection(ERP_CMSModel.sp_GetUserAssignedRights_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetUserNonAssignedRights" ReturnType="Collection(ERP_CMSModel.sp_GetUserNonAssignedRights_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="MenuPanel">
+          <Key>
+            <PropertyRef Name="PanelID" />
+          </Key>
+          <Property Name="PanelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PanelTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <NavigationProperty Name="Menus" Relationship="ERP_CMSModel.FK__Menus__PanelID__300424B4" FromRole="MenuPanel" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="PageRight">
+          <Key>
+            <PropertyRef Name="PageRightID" />
+          </Key>
+          <Property Name="PageRightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MenuLinkID" Type="Int32" />
+          <NavigationProperty Name="UserRights" Relationship="ERP_CMSModel.FK__UserRight__PageR__25869641" FromRole="PageRight" ToRole="UserRight" />
+          <NavigationProperty Name="MenuLink" Relationship="ERP_CMSModel.FK_PageRights_MenuLinks" FromRole="PageRight" ToRole="MenuLink" />
+        </EntityType>
+        <EntityType Name="UserRight">
+          <Key>
+            <PropertyRef Name="UserRightID" />
+          </Key>
+          <Property Name="UserRightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageRightID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PageRight" Relationship="ERP_CMSModel.FK__UserRight__PageR__25869641" FromRole="UserRight" ToRole="PageRight" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__UserRight__UserI__24927208" FromRole="UserRight" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__UserRight__PageR__25869641">
+          <End Type="ERP_CMSModel.PageRight" Role="PageRight" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.UserRight" Role="UserRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PageRight">
+              <PropertyRef Name="PageRightID" />
+            </Principal>
+            <Dependent Role="UserRight">
+              <PropertyRef Name="PageRightID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRight__UserI__24927208">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.UserRight" Role="UserRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserRight">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserLink">
+          <Key>
+            <PropertyRef Name="UserLinkID" />
+          </Key>
+          <Property Name="UserLinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="MenuLinkID" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__UserLinks__UserI__2E1BDC42" FromRole="UserLink" ToRole="User" />
+          <NavigationProperty Name="MenuLink" Relationship="ERP_CMSModel.FK__UserLinks__MenuL__2F10007B" FromRole="UserLink" ToRole="MenuLink" />
+        </EntityType>
+        <Association Name="FK__UserLinks__UserI__2E1BDC42">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.UserLink" Role="UserLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserLink">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MenuLink">
+          <Key>
+            <PropertyRef Name="MenuLinkID" />
+          </Key>
+          <Property Name="MenuLinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuLinkText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MenuID" Type="Int32" />
+          <Property Name="PageURL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <NavigationProperty Name="UserLinks" Relationship="ERP_CMSModel.FK__UserLinks__MenuL__2F10007B" FromRole="MenuLink" ToRole="UserLink" />
+          <NavigationProperty Name="MenuLinks1" Relationship="ERP_CMSModel.FK_MenuLinks_MenuLinks" FromRole="MenuLink" ToRole="MenuLink1" />
+          <NavigationProperty Name="MenuLink1" Relationship="ERP_CMSModel.FK_MenuLinks_MenuLinks" FromRole="MenuLink1" ToRole="MenuLink" />
+          <NavigationProperty Name="PageRights" Relationship="ERP_CMSModel.FK_PageRights_MenuLinks" FromRole="MenuLink" ToRole="PageRight" />
+          <NavigationProperty Name="Menu" Relationship="ERP_CMSModel.FK_MenuLinks_Menus" FromRole="MenuLink" ToRole="Menu" />
+        </EntityType>
+        <Association Name="FK__UserLinks__MenuL__2F10007B">
+          <End Type="ERP_CMSModel.MenuLink" Role="MenuLink" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.UserLink" Role="UserLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLink">
+              <PropertyRef Name="MenuLinkID" />
+            </Principal>
+            <Dependent Role="UserLink">
+              <PropertyRef Name="MenuLinkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuLinks_MenuLinks">
+          <End Type="ERP_CMSModel.MenuLink" Role="MenuLink" Multiplicity="1" />
+          <End Type="ERP_CMSModel.MenuLink" Role="MenuLink1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLink">
+              <PropertyRef Name="MenuLinkID" />
+            </Principal>
+            <Dependent Role="MenuLink1">
+              <PropertyRef Name="MenuLinkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PageRights_MenuLinks">
+          <End Type="ERP_CMSModel.MenuLink" Role="MenuLink" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.PageRight" Role="PageRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuLink">
+              <PropertyRef Name="MenuLinkID" />
+            </Principal>
+            <Dependent Role="PageRight">
+              <PropertyRef Name="MenuLinkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PanelID" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <NavigationProperty Name="MenuLinks" Relationship="ERP_CMSModel.FK_MenuLinks_Menus" FromRole="Menu" ToRole="MenuLink" />
+          <NavigationProperty Name="MenuPanel" Relationship="ERP_CMSModel.FK__Menus__PanelID__300424B4" FromRole="Menu" ToRole="MenuPanel" />
+        </EntityType>
+        <Association Name="FK_MenuLinks_Menus">
+          <End Type="ERP_CMSModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.MenuLink" Role="MenuLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="MenuLink">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menus__PanelID__300424B4">
+          <End Type="ERP_CMSModel.MenuPanel" Role="MenuPanel" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Menu" Role="Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuPanel">
+              <PropertyRef Name="PanelID" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="PanelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_GetPageRightsByUserAndMenuLinkID_Result">
+          <Property Type="Int32" Name="PageRightID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="UserRightID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_GetUserAssignedRights_Result">
+          <Property Type="Int32" Name="UserLinkID" Nullable="false" />
+          <Property Type="Int32" Name="MenuLinkID" Nullable="false" />
+          <Property Type="String" Name="MenuLinkText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_GetUserNonAssignedRights_Result">
+          <Property Type="Int32" Name="MenuLinkID" Nullable="false" />
+          <Property Type="String" Name="MenuLinkText" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERP_CMSModelStoreContainer" CdmEntityContainer="ERP_CMSEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ERP_CMSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuPanels">
+            <EntityTypeMapping TypeName="ERP_CMSModel.MenuPanel">
+              <MappingFragment StoreEntitySet="MenuPanels">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="PanelTitle" ColumnName="PanelTitle" />
+                <ScalarProperty Name="PanelID" ColumnName="PanelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageRights">
+            <EntityTypeMapping TypeName="ERP_CMSModel.PageRight">
+              <MappingFragment StoreEntitySet="PageRights">
+                <ScalarProperty Name="MenuLinkID" ColumnName="MenuLinkID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PageRightID" ColumnName="PageRightID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRights">
+            <EntityTypeMapping TypeName="ERP_CMSModel.UserRight">
+              <MappingFragment StoreEntitySet="UserRights">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PageRightID" ColumnName="PageRightID" />
+                <ScalarProperty Name="UserRightID" ColumnName="UserRightID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLinks">
+            <EntityTypeMapping TypeName="ERP_CMSModel.UserLink">
+              <MappingFragment StoreEntitySet="UserLinks">
+                <ScalarProperty Name="MenuLinkID" ColumnName="MenuLinkID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLinkID" ColumnName="UserLinkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuLinks">
+            <EntityTypeMapping TypeName="ERP_CMSModel.MenuLink">
+              <MappingFragment StoreEntitySet="MenuLinks">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="PageURL" ColumnName="PageURL" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="MenuLinkText" ColumnName="MenuLinkText" />
+                <ScalarProperty Name="MenuLinkID" ColumnName="MenuLinkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Menu">
+              <MappingFragment StoreEntitySet="Menus">
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="PanelID" ColumnName="PanelID" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetPageRightsByUserAndMenuLinkID" FunctionName="ERP_CMSModel.Store.sp_GetPageRightsByUserAndMenuLinkID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_CMSModel.sp_GetPageRightsByUserAndMenuLinkID_Result">
+                <ScalarProperty Name="PageRightID" ColumnName="PageRightID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="UserRightID" ColumnName="UserRightID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetUserAssignedRights" FunctionName="ERP_CMSModel.Store.sp_GetUserAssignedRights">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_CMSModel.sp_GetUserAssignedRights_Result">
+                <ScalarProperty Name="UserLinkID" ColumnName="UserLinkID" />
+                <ScalarProperty Name="MenuLinkID" ColumnName="MenuLinkID" />
+                <ScalarProperty Name="MenuLinkText" ColumnName="MenuLinkText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetUserNonAssignedRights" FunctionName="ERP_CMSModel.Store.sp_GetUserNonAssignedRights">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ERP_CMSModel.sp_GetUserNonAssignedRights_Result">
+                <ScalarProperty Name="MenuLinkID" ColumnName="MenuLinkID" />
+                <ScalarProperty Name="MenuLinkText" ColumnName="MenuLinkText" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
