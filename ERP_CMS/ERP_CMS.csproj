@@ -2071,6 +2071,7 @@
     <Content Include="Admin\Logout.aspx" />
     <Content Include="Admin\Rights\Default.aspx" />
     <Content Include="Admin\Settings\ChangePassword.aspx" />
+    <Content Include="Admin\Setup\AgentType\AgentType.aspx" />
     <Content Include="Admin\Users\Default.aspx" />
     <Content Include="Admin\Users\ListUsers.aspx" />
     <Content Include="Contact.aspx" />
@@ -2173,6 +2174,7 @@
     <Content Include="Admin\assets\vendor\slick-carousel\fonts\slick.woff" />
     <Content Include="Admin\assets\vendor\toastr\toastr.js.map" />
     <Content Include="Admin\fonts\StardosStencil-Bold.ttf" />
+    <Content Include="Admin\Setup\AgentType\AgentType_Handler.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="DB_Code\Model1.Context.tt">
@@ -2284,6 +2286,16 @@
     <Compile Include="Admin\Settings\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Setup\AgentType\AgentType.aspx.cs">
+      <DependentUpon>AgentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Setup\AgentType\AgentType.aspx.designer.cs">
+      <DependentUpon>AgentType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Setup\AgentType\AgentType_Handler.ashx.cs">
+      <DependentUpon>AgentType_Handler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Users\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2315,6 +2327,30 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DB_Code\Agent.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\AgentType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\BL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\Consignee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\Container.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\ContainerSize.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\Insurance.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\MainFile.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB_Code\Menu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2324,10 +2360,22 @@
     <Compile Include="DB_Code\MenuPanel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB_Code\Package.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB_Code\PageRight.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB_Code\Port.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB_Code\PortalUtilities.cs" />
+    <Compile Include="DB_Code\Product_Taxes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\Shipper.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB_Code\sp_GetPageRightsByUserAndMenuLinkID_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -2337,10 +2385,16 @@
     <Compile Include="DB_Code\sp_GetUserNonAssignedRights_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB_Code\Terminal.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB_Code\UserLink.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB_Code\UserRight.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB_Code\Vessel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">

@@ -5,6 +5,162 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ERP_CMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="AgentID" />
+          </Key>
+          <Property Name="AgentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Agent_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Agent_Address" Type="varchar" MaxLength="255" />
+          <Property Name="Agent_Email" Type="varchar" MaxLength="255" />
+          <Property Name="Contact1" Type="varchar" MaxLength="255" />
+          <Property Name="Contact2" Type="varchar" MaxLength="255" />
+          <Property Name="Contact3" Type="varchar" MaxLength="255" />
+          <Property Name="AgentTypeID" Type="int" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+          <Property Name="ShipperID" Type="int" />
+        </EntityType>
+        <EntityType Name="AgentType">
+          <Key>
+            <PropertyRef Name="AgentTypeID" />
+          </Key>
+          <Property Name="AgentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentType" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BL">
+          <Key>
+            <PropertyRef Name="BLID" />
+          </Key>
+          <Property Name="BLID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BL_No" Type="varchar" MaxLength="255" />
+          <Property Name="ConsigneeID" Type="int" />
+          <Property Name="AgentID" Type="int" />
+          <Property Name="VesselID" Type="int" />
+          <Property Name="BL_Date" Type="datetime" />
+          <Property Name="File_Status" Type="varchar" MaxLength="200" />
+          <Property Name="CopyDocsReceivedOn" Type="datetime" />
+          <Property Name="OrignalDocsReceivedOn" Type="datetime" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Consignee">
+          <Key>
+            <PropertyRef Name="ConsigneeID" />
+          </Key>
+          <Property Name="ConsigneeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Consignee_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Consignee_Address" Type="varchar" MaxLength="255" />
+          <Property Name="Careof" Type="varchar" MaxLength="255" />
+          <Property Name="NTN_No" Type="varchar" MaxLength="255" />
+          <Property Name="Jawaz_No" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Container">
+          <Key>
+            <PropertyRef Name="ContainerID" />
+          </Key>
+          <Property Name="ContainerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Container_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Container_Weight" Type="varchar" MaxLength="255" />
+          <Property Name="FreeDays" Type="varchar" MaxLength="255" />
+          <Property Name="IndexNo" Type="varchar" MaxLength="255" />
+          <Property Name="PackageID" Type="int" />
+          <Property Name="ContainerSizeID" Type="int" />
+          <Property Name="VesselID" Type="int" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ContainerSizes">
+          <Key>
+            <PropertyRef Name="ContainerSizeID" />
+          </Key>
+          <Property Name="ContainerSizeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceID" />
+          </Key>
+          <Property Name="InsuranceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Company_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Company_Address" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Contact1" Type="varchar" MaxLength="255" />
+          <Property Name="Contact2" Type="varchar" MaxLength="255" />
+          <Property Name="Contact3" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MainFile">
+          <Key>
+            <PropertyRef Name="MainFileID" />
+          </Key>
+          <Property Name="MainFileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MainFile_Name" Type="varchar" MaxLength="255" />
+          <Property Name="STI_No" Type="varchar" MaxLength="255" />
+          <Property Name="Bill_No" Type="varchar" MaxLength="255" />
+          <Property Name="Bill_Date" Type="datetime" />
+          <Property Name="BLID" Type="int" />
+          <Property Name="InsuranceID" Type="int" />
+          <Property Name="FreeDays" Type="varchar" MaxLength="255" />
+          <Property Name="DocsReceivedBy" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="int" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="MenuLinks">
           <Key>
             <PropertyRef Name="MenuLinkID" />
@@ -32,6 +188,23 @@
           <Property Name="PanelID" Type="int" />
           <Property Name="DisplayOrder" Type="int" />
         </EntityType>
+        <EntityType Name="Packages">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="Quantity" Type="varchar" MaxLength="255" />
+          <Property Name="ProductTaxID" Type="int" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="PageRights">
           <Key>
             <PropertyRef Name="PageRightID" />
@@ -39,6 +212,78 @@
           <Property Name="PageRightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="250" />
           <Property Name="MenuLinkID" Type="int" />
+        </EntityType>
+        <EntityType Name="Port">
+          <Key>
+            <PropertyRef Name="PortID" />
+          </Key>
+          <Property Name="PortID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PortName" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product_Taxes">
+          <Key>
+            <PropertyRef Name="ProductTaxID" />
+          </Key>
+          <Property Name="ProductTaxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HSCode" Type="varchar" MaxLength="255" />
+          <Property Name="CustomDuty" Type="varchar" MaxLength="255" />
+          <Property Name="SalesTax" Type="varchar" MaxLength="255" />
+          <Property Name="AddSalesTax" Type="varchar" MaxLength="255" />
+          <Property Name="IncomeTax" Type="varchar" MaxLength="255" />
+          <Property Name="AddCustomDuty" Type="varchar" MaxLength="255" />
+          <Property Name="InvoiceFine" Type="varchar" MaxLength="255" />
+          <Property Name="IGMD_Blocking" Type="varchar" MaxLength="255" />
+          <Property Name="Excise_SindhTax" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Shipper">
+          <Key>
+            <PropertyRef Name="ShipperID" />
+          </Key>
+          <Property Name="ShipperID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shipper_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Shipper_Address" Type="varchar" MaxLength="255" />
+          <Property Name="Shipper_Email" Type="varchar" MaxLength="255" />
+          <Property Name="Contact1" Type="varchar" MaxLength="255" />
+          <Property Name="Contact2" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Terminal">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="TerminalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TerminalName" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="UserLinks">
           <Key>
@@ -75,6 +320,349 @@
           <Property Name="InsertedDate" Type="datetime" />
           <Property Name="DeletedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Vessel">
+          <Key>
+            <PropertyRef Name="VesselID" />
+          </Key>
+          <Property Name="VesselID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vessel_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Code" Type="varchar" MaxLength="255" />
+          <Property Name="Vessel_Status" Type="varchar" MaxLength="255" />
+          <Property Name="IGM_No" Type="varchar" MaxLength="255" />
+          <Property Name="IGM_Date" Type="datetime" />
+          <Property Name="TerminalID" Type="int" />
+          <Property Name="Total_Weight" Type="varchar" MaxLength="255" />
+          <Property Name="PortofLoading" Type="varchar" MaxLength="255" />
+          <Property Name="PortofDischarge" Type="varchar" MaxLength="255" />
+          <Property Name="PlaceofReceipent" Type="varchar" MaxLength="255" />
+          <Property Name="PlaceofDelivery" Type="varchar" MaxLength="255" />
+          <Property Name="Vessel_ArrivalDate" Type="datetime" />
+          <Property Name="LoadDate" Type="datetime" />
+          <Property Name="DischargeDate" Type="datetime" />
+          <Property Name="FreeDate" Type="datetime" />
+          <Property Name="GD_No" Type="varchar" MaxLength="255" />
+          <Property Name="GD_Date" Type="varchar" MaxLength="255" />
+          <Property Name="Description1" Type="varchar" MaxLength="255" />
+          <Property Name="Description2" Type="varchar" MaxLength="255" />
+          <Property Name="Description3" Type="varchar" MaxLength="255" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="InsertedBy" Type="int" />
+          <Property Name="InsertedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Agent__AgentType__787EE5A0">
+          <End Role="AgentType" Type="Self.AgentType" Multiplicity="0..1" />
+          <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentType">
+              <PropertyRef Name="AgentTypeID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="AgentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agent__DeletedBy__797309D9">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agent__InsertedB__7A672E12">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agent__ShipperID__7B5B524B">
+          <End Role="Shipper" Type="Self.Shipper" Multiplicity="0..1" />
+          <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipper">
+              <PropertyRef Name="ShipperID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="ShipperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AgentType__Delet__74AE54BC">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="AgentType" Type="Self.AgentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AgentType">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AgentType__Inser__75A278F5">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="AgentType" Type="Self.AgentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AgentType">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__AgentID__07C12930">
+          <End Role="Agent" Type="Self.Agent" Multiplicity="0..1" />
+          <End Role="BL" Type="Self.BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="AgentID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="AgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__ConsigneeID__06CD04F7">
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="0..1" />
+          <End Role="BL" Type="Self.BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consignee">
+              <PropertyRef Name="ConsigneeID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="ConsigneeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__DeletedBy__09A971A2">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="BL" Type="Self.BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__InsertedBy__0A9D95DB">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="BL" Type="Self.BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__VesselID__08B54D69">
+          <End Role="Vessel" Type="Self.Vessel" Multiplicity="0..1" />
+          <End Role="BL" Type="Self.BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vessel">
+              <PropertyRef Name="VesselID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="VesselID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignee__Delet__6D0D32F4">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignee__Inser__6E01572D">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Consignee" Type="Self.Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Conta__6754599E">
+          <End Role="ContainerSizes" Type="Self.ContainerSizes" Multiplicity="0..1" />
+          <End Role="Container" Type="Self.Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContainerSizes">
+              <PropertyRef Name="ContainerSizeID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="ContainerSizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Delet__59FA5E80">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="ContainerSizes" Type="Self.ContainerSizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ContainerSizes">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Delet__693CA210">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Container" Type="Self.Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Inser__5AEE82B9">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="ContainerSizes" Type="Self.ContainerSizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ContainerSizes">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Inser__6A30C649">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Container" Type="Self.Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Packa__66603565">
+          <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+          <End Role="Container" Type="Self.Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Vesse__68487DD7">
+          <End Role="Vessel" Type="Self.Vessel" Multiplicity="0..1" />
+          <End Role="Container" Type="Self.Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vessel">
+              <PropertyRef Name="VesselID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="VesselID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Delet__02FC7413">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Inser__03F0984C">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__BLID__0D7A0286">
+          <End Role="BL" Type="Self.BL" Multiplicity="0..1" />
+          <End Role="MainFile" Type="Self.MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BL">
+              <PropertyRef Name="BLID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="BLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__Delete__0F624AF8">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="MainFile" Type="Self.MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__Insert__10566F31">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="MainFile" Type="Self.MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__Insura__0E6E26BF">
+          <End Role="Insurance" Type="Self.Insurance" Multiplicity="0..1" />
+          <End Role="MainFile" Type="Self.MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="InsuranceID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="InsuranceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Menus__PanelID__300424B4">
           <End Role="MenuPanels" Type="Self.MenuPanels" Multiplicity="0..1" />
           <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
@@ -84,6 +672,138 @@
             </Principal>
             <Dependent Role="Menus">
               <PropertyRef Name="PanelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__Delete__52593CB8">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__Insert__534D60F1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__Produc__5165187F">
+          <End Role="Product_Taxes" Type="Self.Product_Taxes" Multiplicity="0..1" />
+          <End Role="Packages" Type="Self.Packages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Taxes">
+              <PropertyRef Name="ProductTaxID" />
+            </Principal>
+            <Dependent Role="Packages">
+              <PropertyRef Name="ProductTaxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Port__DeletedBy__5DCAEF64">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Port__InsertedBy__5EBF139D">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Port" Type="Self.Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_T__Delet__4D94879B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Product_Taxes" Type="Self.Product_Taxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product_Taxes">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_T__Inser__4E88ABD4">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Product_Taxes" Type="Self.Product_Taxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product_Taxes">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shipper__Deleted__70DDC3D8">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Shipper" Type="Self.Shipper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Shipper">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shipper__Inserte__71D1E811">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Shipper" Type="Self.Shipper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Shipper">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Terminal__Delete__5629CD9C">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Terminal">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Terminal__Insert__571DF1D5">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Terminal">
+              <PropertyRef Name="InsertedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -135,6 +855,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Vessel__DeletedB__628FA481">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vessel" Type="Self.Vessel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Vessel">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vessel__Inserted__6383C8BA">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vessel" Type="Self.Vessel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Vessel">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vessel__Terminal__619B8048">
+          <End Role="Terminal" Type="Self.Terminal" Multiplicity="0..1" />
+          <End Role="Vessel" Type="Self.Vessel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Terminal">
+              <PropertyRef Name="TerminalID" />
+            </Principal>
+            <Dependent Role="Vessel">
+              <PropertyRef Name="TerminalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuLinks_MenuLinks">
           <End Role="MenuLinks" Type="Self.MenuLinks" Multiplicity="1" />
           <End Role="MenuLinks1" Type="Self.MenuLinks" Multiplicity="0..1" />
@@ -182,16 +938,178 @@
           <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="ERP_CMSModelStoreContainer">
+          <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgentType" EntityType="Self.AgentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BL" EntityType="Self.BL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consignee" EntityType="Self.Consignee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Container" EntityType="Self.Container" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContainerSizes" EntityType="Self.ContainerSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurance" EntityType="Self.Insurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainFile" EntityType="Self.MainFile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuLinks" EntityType="Self.MenuLinks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuPanels" EntityType="Self.MenuPanels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PageRights" EntityType="Self.PageRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Port" EntityType="Self.Port" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Taxes" EntityType="Self.Product_Taxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shipper" EntityType="Self.Shipper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Terminal" EntityType="Self.Terminal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLinks" EntityType="Self.UserLinks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRights" EntityType="Self.UserRights" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vessel" EntityType="Self.Vessel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Agent__AgentType__787EE5A0" Association="Self.FK__Agent__AgentType__787EE5A0">
+            <End Role="AgentType" EntitySet="AgentType" />
+            <End Role="Agent" EntitySet="Agent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agent__DeletedBy__797309D9" Association="Self.FK__Agent__DeletedBy__797309D9">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Agent" EntitySet="Agent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agent__InsertedB__7A672E12" Association="Self.FK__Agent__InsertedB__7A672E12">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Agent" EntitySet="Agent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agent__ShipperID__7B5B524B" Association="Self.FK__Agent__ShipperID__7B5B524B">
+            <End Role="Shipper" EntitySet="Shipper" />
+            <End Role="Agent" EntitySet="Agent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AgentType__Delet__74AE54BC" Association="Self.FK__AgentType__Delet__74AE54BC">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AgentType" EntitySet="AgentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AgentType__Inser__75A278F5" Association="Self.FK__AgentType__Inser__75A278F5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AgentType" EntitySet="AgentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__AgentID__07C12930" Association="Self.FK__BL__AgentID__07C12930">
+            <End Role="Agent" EntitySet="Agent" />
+            <End Role="BL" EntitySet="BL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__ConsigneeID__06CD04F7" Association="Self.FK__BL__ConsigneeID__06CD04F7">
+            <End Role="Consignee" EntitySet="Consignee" />
+            <End Role="BL" EntitySet="BL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__DeletedBy__09A971A2" Association="Self.FK__BL__DeletedBy__09A971A2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BL" EntitySet="BL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__InsertedBy__0A9D95DB" Association="Self.FK__BL__InsertedBy__0A9D95DB">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="BL" EntitySet="BL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__VesselID__08B54D69" Association="Self.FK__BL__VesselID__08B54D69">
+            <End Role="Vessel" EntitySet="Vessel" />
+            <End Role="BL" EntitySet="BL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignee__Delet__6D0D32F4" Association="Self.FK__Consignee__Delet__6D0D32F4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Consignee" EntitySet="Consignee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignee__Inser__6E01572D" Association="Self.FK__Consignee__Inser__6E01572D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Consignee" EntitySet="Consignee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Conta__6754599E" Association="Self.FK__Container__Conta__6754599E">
+            <End Role="ContainerSizes" EntitySet="ContainerSizes" />
+            <End Role="Container" EntitySet="Container" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Delet__59FA5E80" Association="Self.FK__Container__Delet__59FA5E80">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ContainerSizes" EntitySet="ContainerSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Delet__693CA210" Association="Self.FK__Container__Delet__693CA210">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Container" EntitySet="Container" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Inser__5AEE82B9" Association="Self.FK__Container__Inser__5AEE82B9">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ContainerSizes" EntitySet="ContainerSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Inser__6A30C649" Association="Self.FK__Container__Inser__6A30C649">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Container" EntitySet="Container" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Packa__66603565" Association="Self.FK__Container__Packa__66603565">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="Container" EntitySet="Container" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Vesse__68487DD7" Association="Self.FK__Container__Vesse__68487DD7">
+            <End Role="Vessel" EntitySet="Vessel" />
+            <End Role="Container" EntitySet="Container" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Delet__02FC7413" Association="Self.FK__Insurance__Delet__02FC7413">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Insurance" EntitySet="Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Inser__03F0984C" Association="Self.FK__Insurance__Inser__03F0984C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Insurance" EntitySet="Insurance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__BLID__0D7A0286" Association="Self.FK__MainFile__BLID__0D7A0286">
+            <End Role="BL" EntitySet="BL" />
+            <End Role="MainFile" EntitySet="MainFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__Delete__0F624AF8" Association="Self.FK__MainFile__Delete__0F624AF8">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MainFile" EntitySet="MainFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__Insert__10566F31" Association="Self.FK__MainFile__Insert__10566F31">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MainFile" EntitySet="MainFile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__Insura__0E6E26BF" Association="Self.FK__MainFile__Insura__0E6E26BF">
+            <End Role="Insurance" EntitySet="Insurance" />
+            <End Role="MainFile" EntitySet="MainFile" />
+          </AssociationSet>
           <AssociationSet Name="FK__Menus__PanelID__300424B4" Association="Self.FK__Menus__PanelID__300424B4">
             <End Role="MenuPanels" EntitySet="MenuPanels" />
             <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__Delete__52593CB8" Association="Self.FK__Packages__Delete__52593CB8">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__Insert__534D60F1" Association="Self.FK__Packages__Insert__534D60F1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__Produc__5165187F" Association="Self.FK__Packages__Produc__5165187F">
+            <End Role="Product_Taxes" EntitySet="Product_Taxes" />
+            <End Role="Packages" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Port__DeletedBy__5DCAEF64" Association="Self.FK__Port__DeletedBy__5DCAEF64">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Port__InsertedBy__5EBF139D" Association="Self.FK__Port__InsertedBy__5EBF139D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Port" EntitySet="Port" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_T__Delet__4D94879B" Association="Self.FK__Product_T__Delet__4D94879B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Product_Taxes" EntitySet="Product_Taxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_T__Inser__4E88ABD4" Association="Self.FK__Product_T__Inser__4E88ABD4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Product_Taxes" EntitySet="Product_Taxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shipper__Deleted__70DDC3D8" Association="Self.FK__Shipper__Deleted__70DDC3D8">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Shipper" EntitySet="Shipper" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shipper__Inserte__71D1E811" Association="Self.FK__Shipper__Inserte__71D1E811">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Shipper" EntitySet="Shipper" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Terminal__Delete__5629CD9C" Association="Self.FK__Terminal__Delete__5629CD9C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Terminal" EntitySet="Terminal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Terminal__Insert__571DF1D5" Association="Self.FK__Terminal__Insert__571DF1D5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Terminal" EntitySet="Terminal" />
           </AssociationSet>
           <AssociationSet Name="FK__UserLinks__MenuL__2F10007B" Association="Self.FK__UserLinks__MenuL__2F10007B">
             <End Role="MenuLinks" EntitySet="MenuLinks" />
@@ -208,6 +1126,18 @@
           <AssociationSet Name="FK__UserRight__UserI__24927208" Association="Self.FK__UserRight__UserI__24927208">
             <End Role="Users" EntitySet="Users" />
             <End Role="UserRights" EntitySet="UserRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vessel__DeletedB__628FA481" Association="Self.FK__Vessel__DeletedB__628FA481">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vessel" EntitySet="Vessel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vessel__Inserted__6383C8BA" Association="Self.FK__Vessel__Inserted__6383C8BA">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vessel" EntitySet="Vessel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vessel__Terminal__619B8048" Association="Self.FK__Vessel__Terminal__619B8048">
+            <End Role="Terminal" EntitySet="Terminal" />
+            <End Role="Vessel" EntitySet="Vessel" />
           </AssociationSet>
           <AssociationSet Name="FK_MenuLinks_MenuLinks" Association="Self.FK_MenuLinks_MenuLinks">
             <End Role="MenuLinks" EntitySet="MenuLinks" />
@@ -242,6 +1172,34 @@
           <Property Name="DeletedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="UserRights" Relationship="ERP_CMSModel.FK__UserRight__UserI__24927208" FromRole="User" ToRole="UserRight" />
           <NavigationProperty Name="UserLinks" Relationship="ERP_CMSModel.FK__UserLinks__UserI__2E1BDC42" FromRole="User" ToRole="UserLink" />
+          <NavigationProperty Name="Agents" Relationship="ERP_CMSModel.FK__Agent__DeletedBy__797309D9" FromRole="User" ToRole="Agent" />
+          <NavigationProperty Name="Agents1" Relationship="ERP_CMSModel.FK__Agent__InsertedB__7A672E12" FromRole="User" ToRole="Agent" />
+          <NavigationProperty Name="AgentTypes" Relationship="ERP_CMSModel.FK__AgentType__Delet__74AE54BC" FromRole="User" ToRole="AgentType" />
+          <NavigationProperty Name="AgentTypes1" Relationship="ERP_CMSModel.FK__AgentType__Inser__75A278F5" FromRole="User" ToRole="AgentType" />
+          <NavigationProperty Name="BLs" Relationship="ERP_CMSModel.FK__BL__DeletedBy__09A971A2" FromRole="User" ToRole="BL" />
+          <NavigationProperty Name="BLs1" Relationship="ERP_CMSModel.FK__BL__InsertedBy__0A9D95DB" FromRole="User" ToRole="BL" />
+          <NavigationProperty Name="Consignees" Relationship="ERP_CMSModel.FK__Consignee__Delet__6D0D32F4" FromRole="User" ToRole="Consignee" />
+          <NavigationProperty Name="Consignees1" Relationship="ERP_CMSModel.FK__Consignee__Inser__6E01572D" FromRole="User" ToRole="Consignee" />
+          <NavigationProperty Name="Containers" Relationship="ERP_CMSModel.FK__Container__Delet__693CA210" FromRole="User" ToRole="Container" />
+          <NavigationProperty Name="Containers1" Relationship="ERP_CMSModel.FK__Container__Inser__6A30C649" FromRole="User" ToRole="Container" />
+          <NavigationProperty Name="ContainerSizes" Relationship="ERP_CMSModel.FK__Container__Delet__59FA5E80" FromRole="User" ToRole="ContainerSize" />
+          <NavigationProperty Name="ContainerSizes1" Relationship="ERP_CMSModel.FK__Container__Inser__5AEE82B9" FromRole="User" ToRole="ContainerSize" />
+          <NavigationProperty Name="Insurances" Relationship="ERP_CMSModel.FK__Insurance__Delet__02FC7413" FromRole="User" ToRole="Insurance" />
+          <NavigationProperty Name="Insurances1" Relationship="ERP_CMSModel.FK__Insurance__Inser__03F0984C" FromRole="User" ToRole="Insurance" />
+          <NavigationProperty Name="MainFiles" Relationship="ERP_CMSModel.FK__MainFile__Delete__0F624AF8" FromRole="User" ToRole="MainFile" />
+          <NavigationProperty Name="MainFiles1" Relationship="ERP_CMSModel.FK__MainFile__Insert__10566F31" FromRole="User" ToRole="MainFile" />
+          <NavigationProperty Name="Packages" Relationship="ERP_CMSModel.FK__Packages__Delete__52593CB8" FromRole="User" ToRole="Package" />
+          <NavigationProperty Name="Packages1" Relationship="ERP_CMSModel.FK__Packages__Insert__534D60F1" FromRole="User" ToRole="Package" />
+          <NavigationProperty Name="Ports" Relationship="ERP_CMSModel.FK__Port__DeletedBy__5DCAEF64" FromRole="User" ToRole="Port" />
+          <NavigationProperty Name="Ports1" Relationship="ERP_CMSModel.FK__Port__InsertedBy__5EBF139D" FromRole="User" ToRole="Port" />
+          <NavigationProperty Name="Product_Taxes" Relationship="ERP_CMSModel.FK__Product_T__Delet__4D94879B" FromRole="User" ToRole="Product_Taxes" />
+          <NavigationProperty Name="Product_Taxes1" Relationship="ERP_CMSModel.FK__Product_T__Inser__4E88ABD4" FromRole="User" ToRole="Product_Taxes" />
+          <NavigationProperty Name="Shippers" Relationship="ERP_CMSModel.FK__Shipper__Deleted__70DDC3D8" FromRole="User" ToRole="Shipper" />
+          <NavigationProperty Name="Shippers1" Relationship="ERP_CMSModel.FK__Shipper__Inserte__71D1E811" FromRole="User" ToRole="Shipper" />
+          <NavigationProperty Name="Terminals" Relationship="ERP_CMSModel.FK__Terminal__Delete__5629CD9C" FromRole="User" ToRole="Terminal" />
+          <NavigationProperty Name="Terminals1" Relationship="ERP_CMSModel.FK__Terminal__Insert__571DF1D5" FromRole="User" ToRole="Terminal" />
+          <NavigationProperty Name="Vessels" Relationship="ERP_CMSModel.FK__Vessel__DeletedB__628FA481" FromRole="User" ToRole="Vessel" />
+          <NavigationProperty Name="Vessels1" Relationship="ERP_CMSModel.FK__Vessel__Inserted__6383C8BA" FromRole="User" ToRole="Vessel" />
         </EntityType>
         <EntityContainer Name="ERP_CMSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -288,11 +1246,185 @@
             <Parameter Name="menuLinkID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetUserAssignedRights" ReturnType="Collection(ERP_CMSModel.sp_GetUserAssignedRights_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_GetUserNonAssignedRights" ReturnType="Collection(ERP_CMSModel.sp_GetUserNonAssignedRights_Result)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Agents" EntityType="ERP_CMSModel.Agent" />
+          <EntitySet Name="AgentTypes" EntityType="ERP_CMSModel.AgentType" />
+          <EntitySet Name="BLs" EntityType="ERP_CMSModel.BL" />
+          <EntitySet Name="Consignees" EntityType="ERP_CMSModel.Consignee" />
+          <EntitySet Name="Containers" EntityType="ERP_CMSModel.Container" />
+          <EntitySet Name="ContainerSizes" EntityType="ERP_CMSModel.ContainerSize" />
+          <EntitySet Name="Insurances" EntityType="ERP_CMSModel.Insurance" />
+          <EntitySet Name="MainFiles" EntityType="ERP_CMSModel.MainFile" />
+          <EntitySet Name="Packages" EntityType="ERP_CMSModel.Package" />
+          <EntitySet Name="Ports" EntityType="ERP_CMSModel.Port" />
+          <EntitySet Name="Product_Taxes" EntityType="ERP_CMSModel.Product_Taxes" />
+          <EntitySet Name="Shippers" EntityType="ERP_CMSModel.Shipper" />
+          <EntitySet Name="Terminals" EntityType="ERP_CMSModel.Terminal" />
+          <EntitySet Name="Vessels" EntityType="ERP_CMSModel.Vessel" />
+          <AssociationSet Name="FK__Agent__AgentType__787EE5A0" Association="ERP_CMSModel.FK__Agent__AgentType__787EE5A0">
+            <End Role="AgentType" EntitySet="AgentTypes" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agent__DeletedBy__797309D9" Association="ERP_CMSModel.FK__Agent__DeletedBy__797309D9">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agent__InsertedB__7A672E12" Association="ERP_CMSModel.FK__Agent__InsertedB__7A672E12">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Agent__ShipperID__7B5B524B" Association="ERP_CMSModel.FK__Agent__ShipperID__7B5B524B">
+            <End Role="Shipper" EntitySet="Shippers" />
+            <End Role="Agent" EntitySet="Agents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__AgentID__07C12930" Association="ERP_CMSModel.FK__BL__AgentID__07C12930">
+            <End Role="Agent" EntitySet="Agents" />
+            <End Role="BL" EntitySet="BLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AgentType__Delet__74AE54BC" Association="ERP_CMSModel.FK__AgentType__Delet__74AE54BC">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AgentType" EntitySet="AgentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AgentType__Inser__75A278F5" Association="ERP_CMSModel.FK__AgentType__Inser__75A278F5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AgentType" EntitySet="AgentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__ConsigneeID__06CD04F7" Association="ERP_CMSModel.FK__BL__ConsigneeID__06CD04F7">
+            <End Role="Consignee" EntitySet="Consignees" />
+            <End Role="BL" EntitySet="BLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__DeletedBy__09A971A2" Association="ERP_CMSModel.FK__BL__DeletedBy__09A971A2">
+            <End Role="User" EntitySet="Users" />
+            <End Role="BL" EntitySet="BLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__InsertedBy__0A9D95DB" Association="ERP_CMSModel.FK__BL__InsertedBy__0A9D95DB">
+            <End Role="User" EntitySet="Users" />
+            <End Role="BL" EntitySet="BLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BL__VesselID__08B54D69" Association="ERP_CMSModel.FK__BL__VesselID__08B54D69">
+            <End Role="Vessel" EntitySet="Vessels" />
+            <End Role="BL" EntitySet="BLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__BLID__0D7A0286" Association="ERP_CMSModel.FK__MainFile__BLID__0D7A0286">
+            <End Role="BL" EntitySet="BLs" />
+            <End Role="MainFile" EntitySet="MainFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignee__Delet__6D0D32F4" Association="ERP_CMSModel.FK__Consignee__Delet__6D0D32F4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Consignee" EntitySet="Consignees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Consignee__Inser__6E01572D" Association="ERP_CMSModel.FK__Consignee__Inser__6E01572D">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Consignee" EntitySet="Consignees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Conta__6754599E" Association="ERP_CMSModel.FK__Container__Conta__6754599E">
+            <End Role="ContainerSize" EntitySet="ContainerSizes" />
+            <End Role="Container" EntitySet="Containers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Delet__693CA210" Association="ERP_CMSModel.FK__Container__Delet__693CA210">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Container" EntitySet="Containers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Inser__6A30C649" Association="ERP_CMSModel.FK__Container__Inser__6A30C649">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Container" EntitySet="Containers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Packa__66603565" Association="ERP_CMSModel.FK__Container__Packa__66603565">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="Container" EntitySet="Containers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Vesse__68487DD7" Association="ERP_CMSModel.FK__Container__Vesse__68487DD7">
+            <End Role="Vessel" EntitySet="Vessels" />
+            <End Role="Container" EntitySet="Containers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Delet__59FA5E80" Association="ERP_CMSModel.FK__Container__Delet__59FA5E80">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ContainerSize" EntitySet="ContainerSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Container__Inser__5AEE82B9" Association="ERP_CMSModel.FK__Container__Inser__5AEE82B9">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ContainerSize" EntitySet="ContainerSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Delet__02FC7413" Association="ERP_CMSModel.FK__Insurance__Delet__02FC7413">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Insurance" EntitySet="Insurances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Insurance__Inser__03F0984C" Association="ERP_CMSModel.FK__Insurance__Inser__03F0984C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Insurance" EntitySet="Insurances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__Insura__0E6E26BF" Association="ERP_CMSModel.FK__MainFile__Insura__0E6E26BF">
+            <End Role="Insurance" EntitySet="Insurances" />
+            <End Role="MainFile" EntitySet="MainFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__Delete__0F624AF8" Association="ERP_CMSModel.FK__MainFile__Delete__0F624AF8">
+            <End Role="User" EntitySet="Users" />
+            <End Role="MainFile" EntitySet="MainFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MainFile__Insert__10566F31" Association="ERP_CMSModel.FK__MainFile__Insert__10566F31">
+            <End Role="User" EntitySet="Users" />
+            <End Role="MainFile" EntitySet="MainFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__Delete__52593CB8" Association="ERP_CMSModel.FK__Packages__Delete__52593CB8">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__Insert__534D60F1" Association="ERP_CMSModel.FK__Packages__Insert__534D60F1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Packages__Produc__5165187F" Association="ERP_CMSModel.FK__Packages__Produc__5165187F">
+            <End Role="Product_Taxes" EntitySet="Product_Taxes" />
+            <End Role="Package" EntitySet="Packages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Port__DeletedBy__5DCAEF64" Association="ERP_CMSModel.FK__Port__DeletedBy__5DCAEF64">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Port" EntitySet="Ports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Port__InsertedBy__5EBF139D" Association="ERP_CMSModel.FK__Port__InsertedBy__5EBF139D">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Port" EntitySet="Ports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_T__Delet__4D94879B" Association="ERP_CMSModel.FK__Product_T__Delet__4D94879B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product_Taxes" EntitySet="Product_Taxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product_T__Inser__4E88ABD4" Association="ERP_CMSModel.FK__Product_T__Inser__4E88ABD4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product_Taxes" EntitySet="Product_Taxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shipper__Deleted__70DDC3D8" Association="ERP_CMSModel.FK__Shipper__Deleted__70DDC3D8">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Shipper" EntitySet="Shippers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shipper__Inserte__71D1E811" Association="ERP_CMSModel.FK__Shipper__Inserte__71D1E811">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Shipper" EntitySet="Shippers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Terminal__Delete__5629CD9C" Association="ERP_CMSModel.FK__Terminal__Delete__5629CD9C">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Terminal" EntitySet="Terminals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Terminal__Insert__571DF1D5" Association="ERP_CMSModel.FK__Terminal__Insert__571DF1D5">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Terminal" EntitySet="Terminals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vessel__Terminal__619B8048" Association="ERP_CMSModel.FK__Vessel__Terminal__619B8048">
+            <End Role="Terminal" EntitySet="Terminals" />
+            <End Role="Vessel" EntitySet="Vessels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vessel__DeletedB__628FA481" Association="ERP_CMSModel.FK__Vessel__DeletedB__628FA481">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vessel" EntitySet="Vessels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vessel__Inserted__6383C8BA" Association="ERP_CMSModel.FK__Vessel__Inserted__6383C8BA">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vessel" EntitySet="Vessels" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="MenuPanel">
           <Key>
@@ -473,6 +1605,814 @@
           <Property Type="Int32" Name="MenuLinkID" Nullable="false" />
           <Property Type="String" Name="MenuLinkText" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="Agent">
+          <Key>
+            <PropertyRef Name="AgentID" />
+          </Key>
+          <Property Name="AgentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Agent_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Agent_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Agent_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AgentTypeID" Type="Int32" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipperID" Type="Int32" />
+          <NavigationProperty Name="AgentType" Relationship="ERP_CMSModel.FK__Agent__AgentType__787EE5A0" FromRole="Agent" ToRole="AgentType" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Agent__DeletedBy__797309D9" FromRole="Agent" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Agent__InsertedB__7A672E12" FromRole="Agent" ToRole="User" />
+          <NavigationProperty Name="Shipper" Relationship="ERP_CMSModel.FK__Agent__ShipperID__7B5B524B" FromRole="Agent" ToRole="Shipper" />
+          <NavigationProperty Name="BLs" Relationship="ERP_CMSModel.FK__BL__AgentID__07C12930" FromRole="Agent" ToRole="BL" />
+        </EntityType>
+        <EntityType Name="AgentType">
+          <Key>
+            <PropertyRef Name="AgentTypeID" />
+          </Key>
+          <Property Name="AgentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentType1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agents" Relationship="ERP_CMSModel.FK__Agent__AgentType__787EE5A0" FromRole="AgentType" ToRole="Agent" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__AgentType__Delet__74AE54BC" FromRole="AgentType" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__AgentType__Inser__75A278F5" FromRole="AgentType" ToRole="User" />
+        </EntityType>
+        <EntityType Name="BL">
+          <Key>
+            <PropertyRef Name="BLID" />
+          </Key>
+          <Property Name="BLID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BL_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneeID" Type="Int32" />
+          <Property Name="AgentID" Type="Int32" />
+          <Property Name="VesselID" Type="Int32" />
+          <Property Name="BL_Date" Type="DateTime" Precision="3" />
+          <Property Name="File_Status" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CopyDocsReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="OrignalDocsReceivedOn" Type="DateTime" Precision="3" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agent" Relationship="ERP_CMSModel.FK__BL__AgentID__07C12930" FromRole="BL" ToRole="Agent" />
+          <NavigationProperty Name="Consignee" Relationship="ERP_CMSModel.FK__BL__ConsigneeID__06CD04F7" FromRole="BL" ToRole="Consignee" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__BL__DeletedBy__09A971A2" FromRole="BL" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__BL__InsertedBy__0A9D95DB" FromRole="BL" ToRole="User" />
+          <NavigationProperty Name="Vessel" Relationship="ERP_CMSModel.FK__BL__VesselID__08B54D69" FromRole="BL" ToRole="Vessel" />
+          <NavigationProperty Name="MainFiles" Relationship="ERP_CMSModel.FK__MainFile__BLID__0D7A0286" FromRole="BL" ToRole="MainFile" />
+        </EntityType>
+        <EntityType Name="Consignee">
+          <Key>
+            <PropertyRef Name="ConsigneeID" />
+          </Key>
+          <Property Name="ConsigneeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Consignee_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Consignee_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Careof" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NTN_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Jawaz_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BLs" Relationship="ERP_CMSModel.FK__BL__ConsigneeID__06CD04F7" FromRole="Consignee" ToRole="BL" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Consignee__Delet__6D0D32F4" FromRole="Consignee" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Consignee__Inser__6E01572D" FromRole="Consignee" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Container">
+          <Key>
+            <PropertyRef Name="ContainerID" />
+          </Key>
+          <Property Name="ContainerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Container_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Container_Weight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FreeDays" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IndexNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PackageID" Type="Int32" />
+          <Property Name="ContainerSizeID" Type="Int32" />
+          <Property Name="VesselID" Type="Int32" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ContainerSize" Relationship="ERP_CMSModel.FK__Container__Conta__6754599E" FromRole="Container" ToRole="ContainerSize" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Container__Delet__693CA210" FromRole="Container" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Container__Inser__6A30C649" FromRole="Container" ToRole="User" />
+          <NavigationProperty Name="Package" Relationship="ERP_CMSModel.FK__Container__Packa__66603565" FromRole="Container" ToRole="Package" />
+          <NavigationProperty Name="Vessel" Relationship="ERP_CMSModel.FK__Container__Vesse__68487DD7" FromRole="Container" ToRole="Vessel" />
+        </EntityType>
+        <EntityType Name="ContainerSize">
+          <Key>
+            <PropertyRef Name="ContainerSizeID" />
+          </Key>
+          <Property Name="ContainerSizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Size" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Containers" Relationship="ERP_CMSModel.FK__Container__Conta__6754599E" FromRole="ContainerSize" ToRole="Container" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Container__Delet__59FA5E80" FromRole="ContainerSize" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Container__Inser__5AEE82B9" FromRole="ContainerSize" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Insurance">
+          <Key>
+            <PropertyRef Name="InsuranceID" />
+          </Key>
+          <Property Name="InsuranceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Company_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Insurance__Delet__02FC7413" FromRole="Insurance" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Insurance__Inser__03F0984C" FromRole="Insurance" ToRole="User" />
+          <NavigationProperty Name="MainFiles" Relationship="ERP_CMSModel.FK__MainFile__Insura__0E6E26BF" FromRole="Insurance" ToRole="MainFile" />
+        </EntityType>
+        <EntityType Name="MainFile">
+          <Key>
+            <PropertyRef Name="MainFileID" />
+          </Key>
+          <Property Name="MainFileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainFile_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="STI_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Bill_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Bill_Date" Type="DateTime" Precision="3" />
+          <Property Name="BLID" Type="Int32" />
+          <Property Name="InsuranceID" Type="Int32" />
+          <Property Name="FreeDays" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DocsReceivedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BL" Relationship="ERP_CMSModel.FK__MainFile__BLID__0D7A0286" FromRole="MainFile" ToRole="BL" />
+          <NavigationProperty Name="Insurance" Relationship="ERP_CMSModel.FK__MainFile__Insura__0E6E26BF" FromRole="MainFile" ToRole="Insurance" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__MainFile__Delete__0F624AF8" FromRole="MainFile" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__MainFile__Insert__10566F31" FromRole="MainFile" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ProductTaxID" Type="Int32" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Containers" Relationship="ERP_CMSModel.FK__Container__Packa__66603565" FromRole="Package" ToRole="Container" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Packages__Delete__52593CB8" FromRole="Package" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Packages__Insert__534D60F1" FromRole="Package" ToRole="User" />
+          <NavigationProperty Name="Product_Taxes" Relationship="ERP_CMSModel.FK__Packages__Produc__5165187F" FromRole="Package" ToRole="Product_Taxes" />
+        </EntityType>
+        <EntityType Name="Port">
+          <Key>
+            <PropertyRef Name="PortID" />
+          </Key>
+          <Property Name="PortID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PortName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Port__DeletedBy__5DCAEF64" FromRole="Port" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Port__InsertedBy__5EBF139D" FromRole="Port" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Product_Taxes">
+          <Key>
+            <PropertyRef Name="ProductTaxID" />
+          </Key>
+          <Property Name="ProductTaxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HSCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CustomDuty" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SalesTax" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AddSalesTax" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IncomeTax" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AddCustomDuty" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceFine" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IGMD_Blocking" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Excise_SindhTax" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Packages" Relationship="ERP_CMSModel.FK__Packages__Produc__5165187F" FromRole="Product_Taxes" ToRole="Package" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Product_T__Delet__4D94879B" FromRole="Product_Taxes" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Product_T__Inser__4E88ABD4" FromRole="Product_Taxes" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Shipper">
+          <Key>
+            <PropertyRef Name="ShipperID" />
+          </Key>
+          <Property Name="ShipperID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shipper_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Shipper_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Shipper_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Contact2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agents" Relationship="ERP_CMSModel.FK__Agent__ShipperID__7B5B524B" FromRole="Shipper" ToRole="Agent" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Shipper__Deleted__70DDC3D8" FromRole="Shipper" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Shipper__Inserte__71D1E811" FromRole="Shipper" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Terminal">
+          <Key>
+            <PropertyRef Name="TerminalID" />
+          </Key>
+          <Property Name="TerminalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TerminalName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Terminal__Delete__5629CD9C" FromRole="Terminal" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Terminal__Insert__571DF1D5" FromRole="Terminal" ToRole="User" />
+          <NavigationProperty Name="Vessels" Relationship="ERP_CMSModel.FK__Vessel__Terminal__619B8048" FromRole="Terminal" ToRole="Vessel" />
+        </EntityType>
+        <EntityType Name="Vessel">
+          <Key>
+            <PropertyRef Name="VesselID" />
+          </Key>
+          <Property Name="VesselID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vessel_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Vessel_Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IGM_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IGM_Date" Type="DateTime" Precision="3" />
+          <Property Name="TerminalID" Type="Int32" />
+          <Property Name="Total_Weight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PortofLoading" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PortofDischarge" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceofReceipent" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceofDelivery" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Vessel_ArrivalDate" Type="DateTime" Precision="3" />
+          <Property Name="LoadDate" Type="DateTime" Precision="3" />
+          <Property Name="DischargeDate" Type="DateTime" Precision="3" />
+          <Property Name="FreeDate" Type="DateTime" Precision="3" />
+          <Property Name="GD_No" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GD_Date" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="InsertedBy" Type="Int32" />
+          <Property Name="InsertedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BLs" Relationship="ERP_CMSModel.FK__BL__VesselID__08B54D69" FromRole="Vessel" ToRole="BL" />
+          <NavigationProperty Name="Containers" Relationship="ERP_CMSModel.FK__Container__Vesse__68487DD7" FromRole="Vessel" ToRole="Container" />
+          <NavigationProperty Name="Terminal" Relationship="ERP_CMSModel.FK__Vessel__Terminal__619B8048" FromRole="Vessel" ToRole="Terminal" />
+          <NavigationProperty Name="User" Relationship="ERP_CMSModel.FK__Vessel__DeletedB__628FA481" FromRole="Vessel" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="ERP_CMSModel.FK__Vessel__Inserted__6383C8BA" FromRole="Vessel" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Agent__AgentType__787EE5A0">
+          <End Type="ERP_CMSModel.AgentType" Role="AgentType" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentType">
+              <PropertyRef Name="AgentTypeID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="AgentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agent__DeletedBy__797309D9">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agent__InsertedB__7A672E12">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Agent__ShipperID__7B5B524B">
+          <End Type="ERP_CMSModel.Shipper" Role="Shipper" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Agent" Role="Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipper">
+              <PropertyRef Name="ShipperID" />
+            </Principal>
+            <Dependent Role="Agent">
+              <PropertyRef Name="ShipperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__AgentID__07C12930">
+          <End Type="ERP_CMSModel.Agent" Role="Agent" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.BL" Role="BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agent">
+              <PropertyRef Name="AgentID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="AgentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AgentType__Delet__74AE54BC">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.AgentType" Role="AgentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AgentType">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AgentType__Inser__75A278F5">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.AgentType" Role="AgentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AgentType">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__ConsigneeID__06CD04F7">
+          <End Type="ERP_CMSModel.Consignee" Role="Consignee" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.BL" Role="BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Consignee">
+              <PropertyRef Name="ConsigneeID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="ConsigneeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__DeletedBy__09A971A2">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.BL" Role="BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__InsertedBy__0A9D95DB">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.BL" Role="BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BL__VesselID__08B54D69">
+          <End Type="ERP_CMSModel.Vessel" Role="Vessel" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.BL" Role="BL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vessel">
+              <PropertyRef Name="VesselID" />
+            </Principal>
+            <Dependent Role="BL">
+              <PropertyRef Name="VesselID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__BLID__0D7A0286">
+          <End Type="ERP_CMSModel.BL" Role="BL" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.MainFile" Role="MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BL">
+              <PropertyRef Name="BLID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="BLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignee__Delet__6D0D32F4">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Consignee" Role="Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Consignee__Inser__6E01572D">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Consignee" Role="Consignee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Consignee">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Conta__6754599E">
+          <End Type="ERP_CMSModel.ContainerSize" Role="ContainerSize" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Container" Role="Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContainerSize">
+              <PropertyRef Name="ContainerSizeID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="ContainerSizeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Delet__693CA210">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Container" Role="Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Inser__6A30C649">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Container" Role="Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Packa__66603565">
+          <End Type="ERP_CMSModel.Package" Role="Package" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Container" Role="Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Vesse__68487DD7">
+          <End Type="ERP_CMSModel.Vessel" Role="Vessel" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Container" Role="Container" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vessel">
+              <PropertyRef Name="VesselID" />
+            </Principal>
+            <Dependent Role="Container">
+              <PropertyRef Name="VesselID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Delet__59FA5E80">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.ContainerSize" Role="ContainerSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ContainerSize">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Container__Inser__5AEE82B9">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.ContainerSize" Role="ContainerSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ContainerSize">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Delet__02FC7413">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Insurance" Role="Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Insurance__Inser__03F0984C">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Insurance" Role="Insurance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Insurance">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__Insura__0E6E26BF">
+          <End Type="ERP_CMSModel.Insurance" Role="Insurance" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.MainFile" Role="MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurance">
+              <PropertyRef Name="InsuranceID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="InsuranceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__Delete__0F624AF8">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.MainFile" Role="MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MainFile__Insert__10566F31">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.MainFile" Role="MainFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MainFile">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__Delete__52593CB8">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__Insert__534D60F1">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Packages__Produc__5165187F">
+          <End Type="ERP_CMSModel.Product_Taxes" Role="Product_Taxes" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Package" Role="Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Taxes">
+              <PropertyRef Name="ProductTaxID" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="ProductTaxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Port__DeletedBy__5DCAEF64">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Port" Role="Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Port__InsertedBy__5EBF139D">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Port" Role="Port" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Port">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_T__Delet__4D94879B">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Product_Taxes" Role="Product_Taxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product_Taxes">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product_T__Inser__4E88ABD4">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Product_Taxes" Role="Product_Taxes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product_Taxes">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shipper__Deleted__70DDC3D8">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Shipper" Role="Shipper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Shipper">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shipper__Inserte__71D1E811">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Shipper" Role="Shipper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Shipper">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Terminal__Delete__5629CD9C">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Terminal" Role="Terminal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Terminal">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Terminal__Insert__571DF1D5">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Terminal" Role="Terminal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Terminal">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vessel__Terminal__619B8048">
+          <End Type="ERP_CMSModel.Terminal" Role="Terminal" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Vessel" Role="Vessel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Terminal">
+              <PropertyRef Name="TerminalID" />
+            </Principal>
+            <Dependent Role="Vessel">
+              <PropertyRef Name="TerminalID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vessel__DeletedB__628FA481">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Vessel" Role="Vessel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Vessel">
+              <PropertyRef Name="DeletedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vessel__Inserted__6383C8BA">
+          <End Type="ERP_CMSModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ERP_CMSModel.Vessel" Role="Vessel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Vessel">
+              <PropertyRef Name="InsertedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -582,6 +2522,296 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Agents">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Agent">
+              <MappingFragment StoreEntitySet="Agent">
+                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="AgentTypeID" ColumnName="AgentTypeID" />
+                <ScalarProperty Name="Contact3" ColumnName="Contact3" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Agent_Email" ColumnName="Agent_Email" />
+                <ScalarProperty Name="Agent_Address" ColumnName="Agent_Address" />
+                <ScalarProperty Name="Agent_Name" ColumnName="Agent_Name" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgentTypes">
+            <EntityTypeMapping TypeName="ERP_CMSModel.AgentType">
+              <MappingFragment StoreEntitySet="AgentType">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="AgentType1" ColumnName="AgentType" />
+                <ScalarProperty Name="AgentTypeID" ColumnName="AgentTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BLs">
+            <EntityTypeMapping TypeName="ERP_CMSModel.BL">
+              <MappingFragment StoreEntitySet="BL">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="OrignalDocsReceivedOn" ColumnName="OrignalDocsReceivedOn" />
+                <ScalarProperty Name="CopyDocsReceivedOn" ColumnName="CopyDocsReceivedOn" />
+                <ScalarProperty Name="File_Status" ColumnName="File_Status" />
+                <ScalarProperty Name="BL_Date" ColumnName="BL_Date" />
+                <ScalarProperty Name="VesselID" ColumnName="VesselID" />
+                <ScalarProperty Name="AgentID" ColumnName="AgentID" />
+                <ScalarProperty Name="ConsigneeID" ColumnName="ConsigneeID" />
+                <ScalarProperty Name="BL_No" ColumnName="BL_No" />
+                <ScalarProperty Name="BLID" ColumnName="BLID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consignees">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Consignee">
+              <MappingFragment StoreEntitySet="Consignee">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Jawaz_No" ColumnName="Jawaz_No" />
+                <ScalarProperty Name="NTN_No" ColumnName="NTN_No" />
+                <ScalarProperty Name="Careof" ColumnName="Careof" />
+                <ScalarProperty Name="Consignee_Address" ColumnName="Consignee_Address" />
+                <ScalarProperty Name="Consignee_Name" ColumnName="Consignee_Name" />
+                <ScalarProperty Name="ConsigneeID" ColumnName="ConsigneeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Containers">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Container">
+              <MappingFragment StoreEntitySet="Container">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="VesselID" ColumnName="VesselID" />
+                <ScalarProperty Name="ContainerSizeID" ColumnName="ContainerSizeID" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="IndexNo" ColumnName="IndexNo" />
+                <ScalarProperty Name="FreeDays" ColumnName="FreeDays" />
+                <ScalarProperty Name="Container_Weight" ColumnName="Container_Weight" />
+                <ScalarProperty Name="Container_Name" ColumnName="Container_Name" />
+                <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContainerSizes">
+            <EntityTypeMapping TypeName="ERP_CMSModel.ContainerSize">
+              <MappingFragment StoreEntitySet="ContainerSizes">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="ContainerSizeID" ColumnName="ContainerSizeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurances">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Insurance">
+              <MappingFragment StoreEntitySet="Insurance">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Contact3" ColumnName="Contact3" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Company_Address" ColumnName="Company_Address" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainFiles">
+            <EntityTypeMapping TypeName="ERP_CMSModel.MainFile">
+              <MappingFragment StoreEntitySet="MainFile">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="DocsReceivedBy" ColumnName="DocsReceivedBy" />
+                <ScalarProperty Name="FreeDays" ColumnName="FreeDays" />
+                <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+                <ScalarProperty Name="BLID" ColumnName="BLID" />
+                <ScalarProperty Name="Bill_Date" ColumnName="Bill_Date" />
+                <ScalarProperty Name="Bill_No" ColumnName="Bill_No" />
+                <ScalarProperty Name="STI_No" ColumnName="STI_No" />
+                <ScalarProperty Name="MainFile_Name" ColumnName="MainFile_Name" />
+                <ScalarProperty Name="MainFileID" ColumnName="MainFileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Package">
+              <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="ProductTaxID" ColumnName="ProductTaxID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ports">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Port">
+              <MappingFragment StoreEntitySet="Port">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="PortName" ColumnName="PortName" />
+                <ScalarProperty Name="PortID" ColumnName="PortID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Taxes">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Product_Taxes">
+              <MappingFragment StoreEntitySet="Product_Taxes">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Excise_SindhTax" ColumnName="Excise_SindhTax" />
+                <ScalarProperty Name="IGMD_Blocking" ColumnName="IGMD_Blocking" />
+                <ScalarProperty Name="InvoiceFine" ColumnName="InvoiceFine" />
+                <ScalarProperty Name="AddCustomDuty" ColumnName="AddCustomDuty" />
+                <ScalarProperty Name="IncomeTax" ColumnName="IncomeTax" />
+                <ScalarProperty Name="AddSalesTax" ColumnName="AddSalesTax" />
+                <ScalarProperty Name="SalesTax" ColumnName="SalesTax" />
+                <ScalarProperty Name="CustomDuty" ColumnName="CustomDuty" />
+                <ScalarProperty Name="HSCode" ColumnName="HSCode" />
+                <ScalarProperty Name="ProductTaxID" ColumnName="ProductTaxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shippers">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Shipper">
+              <MappingFragment StoreEntitySet="Shipper">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Contact2" ColumnName="Contact2" />
+                <ScalarProperty Name="Contact1" ColumnName="Contact1" />
+                <ScalarProperty Name="Shipper_Email" ColumnName="Shipper_Email" />
+                <ScalarProperty Name="Shipper_Address" ColumnName="Shipper_Address" />
+                <ScalarProperty Name="Shipper_Name" ColumnName="Shipper_Name" />
+                <ScalarProperty Name="ShipperID" ColumnName="ShipperID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Terminals">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Terminal">
+              <MappingFragment StoreEntitySet="Terminal">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="TerminalName" ColumnName="TerminalName" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vessels">
+            <EntityTypeMapping TypeName="ERP_CMSModel.Vessel">
+              <MappingFragment StoreEntitySet="Vessel">
+                <ScalarProperty Name="InsertedDate" ColumnName="InsertedDate" />
+                <ScalarProperty Name="InsertedBy" ColumnName="InsertedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="GD_Date" ColumnName="GD_Date" />
+                <ScalarProperty Name="GD_No" ColumnName="GD_No" />
+                <ScalarProperty Name="FreeDate" ColumnName="FreeDate" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+                <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+                <ScalarProperty Name="Vessel_ArrivalDate" ColumnName="Vessel_ArrivalDate" />
+                <ScalarProperty Name="PlaceofDelivery" ColumnName="PlaceofDelivery" />
+                <ScalarProperty Name="PlaceofReceipent" ColumnName="PlaceofReceipent" />
+                <ScalarProperty Name="PortofDischarge" ColumnName="PortofDischarge" />
+                <ScalarProperty Name="PortofLoading" ColumnName="PortofLoading" />
+                <ScalarProperty Name="Total_Weight" ColumnName="Total_Weight" />
+                <ScalarProperty Name="TerminalID" ColumnName="TerminalID" />
+                <ScalarProperty Name="IGM_Date" ColumnName="IGM_Date" />
+                <ScalarProperty Name="IGM_No" ColumnName="IGM_No" />
+                <ScalarProperty Name="Vessel_Status" ColumnName="Vessel_Status" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Vessel_Name" ColumnName="Vessel_Name" />
+                <ScalarProperty Name="VesselID" ColumnName="VesselID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

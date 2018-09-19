@@ -20,6 +20,60 @@
         <EntityTypeShape EntityType="ERP_CMSModel.Menu" Width="1.5" PointX="5.625" PointY="1.25" />
         <AssociationConnector Association="ERP_CMSModel.FK_MenuLinks_Menus" />
         <AssociationConnector Association="ERP_CMSModel.FK__Menus__PanelID__300424B4" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Agent" Width="1.5" PointX="5.25" PointY="29" />
+        <EntityTypeShape EntityType="ERP_CMSModel.AgentType" Width="1.5" PointX="3" PointY="34.125" />
+        <EntityTypeShape EntityType="ERP_CMSModel.BL" Width="1.5" PointX="7.5" PointY="14.75" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Consignee" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Container" Width="1.5" PointX="7.5" PointY="24" />
+        <EntityTypeShape EntityType="ERP_CMSModel.ContainerSize" Width="1.5" PointX="3" PointY="48.75" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Insurance" Width="1.5" PointX="3" PointY="53" />
+        <EntityTypeShape EntityType="ERP_CMSModel.MainFile" Width="1.5" PointX="9.75" PointY="26.625" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Package" Width="1.5" PointX="5.25" PointY="12.125" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Port" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Product_Taxes" Width="1.5" PointX="3" PointY="22.625" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Shipper" Width="1.5" PointX="3" PointY="58.25" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Terminal" Width="1.5" PointX="3" PointY="44.5" />
+        <EntityTypeShape EntityType="ERP_CMSModel.Vessel" Width="1.5" PointX="5.25" PointY="20.875" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Agent__AgentType__787EE5A0" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Agent__DeletedBy__797309D9" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Agent__InsertedB__7A672E12" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Agent__ShipperID__7B5B524B" />
+        <AssociationConnector Association="ERP_CMSModel.FK__BL__AgentID__07C12930" />
+        <AssociationConnector Association="ERP_CMSModel.FK__AgentType__Delet__74AE54BC" />
+        <AssociationConnector Association="ERP_CMSModel.FK__AgentType__Inser__75A278F5" />
+        <AssociationConnector Association="ERP_CMSModel.FK__BL__ConsigneeID__06CD04F7" />
+        <AssociationConnector Association="ERP_CMSModel.FK__BL__DeletedBy__09A971A2" />
+        <AssociationConnector Association="ERP_CMSModel.FK__BL__InsertedBy__0A9D95DB" />
+        <AssociationConnector Association="ERP_CMSModel.FK__BL__VesselID__08B54D69" />
+        <AssociationConnector Association="ERP_CMSModel.FK__MainFile__BLID__0D7A0286" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Consignee__Delet__6D0D32F4" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Consignee__Inser__6E01572D" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Conta__6754599E" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Delet__693CA210" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Inser__6A30C649" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Packa__66603565" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Vesse__68487DD7" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Delet__59FA5E80" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Container__Inser__5AEE82B9" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Insurance__Delet__02FC7413" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Insurance__Inser__03F0984C" />
+        <AssociationConnector Association="ERP_CMSModel.FK__MainFile__Insura__0E6E26BF" />
+        <AssociationConnector Association="ERP_CMSModel.FK__MainFile__Delete__0F624AF8" />
+        <AssociationConnector Association="ERP_CMSModel.FK__MainFile__Insert__10566F31" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Packages__Delete__52593CB8" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Packages__Insert__534D60F1" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Packages__Produc__5165187F" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Port__DeletedBy__5DCAEF64" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Port__InsertedBy__5EBF139D" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Product_T__Delet__4D94879B" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Product_T__Inser__4E88ABD4" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Shipper__Deleted__70DDC3D8" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Shipper__Inserte__71D1E811" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Terminal__Delete__5629CD9C" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Terminal__Insert__571DF1D5" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Vessel__Terminal__619B8048" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Vessel__DeletedB__628FA481" />
+        <AssociationConnector Association="ERP_CMSModel.FK__Vessel__Inserted__6383C8BA" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

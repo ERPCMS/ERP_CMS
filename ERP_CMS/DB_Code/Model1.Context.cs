@@ -34,6 +34,20 @@ namespace ERP_CMS.DB_Code
         public virtual DbSet<UserLink> UserLinks { get; set; }
         public virtual DbSet<MenuLink> MenuLinks { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<Agent> Agents { get; set; }
+        public virtual DbSet<AgentType> AgentTypes { get; set; }
+        public virtual DbSet<BL> BLs { get; set; }
+        public virtual DbSet<Consignee> Consignees { get; set; }
+        public virtual DbSet<Container> Containers { get; set; }
+        public virtual DbSet<ContainerSize> ContainerSizes { get; set; }
+        public virtual DbSet<Insurance> Insurances { get; set; }
+        public virtual DbSet<MainFile> MainFiles { get; set; }
+        public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<Port> Ports { get; set; }
+        public virtual DbSet<Product_Taxes> Product_Taxes { get; set; }
+        public virtual DbSet<Shipper> Shippers { get; set; }
+        public virtual DbSet<Terminal> Terminals { get; set; }
+        public virtual DbSet<Vessel> Vessels { get; set; }
     
         public virtual ObjectResult<sp_GetPageRightsByUserAndMenuLinkID_Result> sp_GetPageRightsByUserAndMenuLinkID(Nullable<int> userID, Nullable<int> menuLinkID)
         {

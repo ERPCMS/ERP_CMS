@@ -47,13 +47,14 @@ namespace ERP_CMS.DB_Code
         }
         public enum MenuLinks
         {
-            ManageCustomer = 1,
+            ManageAgentType = 1,
             ChangePassword = 4,
             Profile = 39,
             AddUser = 10,
             ListUsers = 11,
             ManageRights = 3,
-            ManageUsers = 2
+            ManageUsers = 2,
+
 
         }
 
