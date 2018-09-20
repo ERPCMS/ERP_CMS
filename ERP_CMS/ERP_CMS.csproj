@@ -370,6 +370,7 @@
     <Content Include="Admin\assets\images\logo-blue.png" />
     <Content Include="Admin\assets\images\logo.png" />
     <Content Include="Admin\assets\images\poster.jpg" />
+    <Content Include="Admin\assets\jquery\scripts\jquery-1.11.3.js" />
     <Content Include="Admin\assets\jquery\scripts\jquery-1.11.3.min.js" />
     <Content Include="Admin\assets\jquery\scripts\jquery-ui.js" />
     <Content Include="Admin\assets\jquery\scripts\jquery-ui.min.js" />
@@ -2080,6 +2081,7 @@
     <Content Include="Admin\Rights\Default.aspx" />
     <Content Include="Admin\Settings\ChangePassword.aspx" />
     <Content Include="Admin\Setup\AgentType\AgentType.aspx" />
+    <Content Include="Admin\Setup\Agent\Agent.aspx" />
     <Content Include="Admin\Users\Default.aspx" />
     <Content Include="Admin\Users\ListUsers.aspx" />
     <Content Include="Contact.aspx" />
@@ -2183,6 +2185,8 @@
     <Content Include="Admin\assets\vendor\toastr\toastr.js.map" />
     <Content Include="Admin\fonts\StardosStencil-Bold.ttf" />
     <Content Include="Admin\Setup\AgentType\AgentType_Handler.ashx" />
+    <Content Include="Admin\Setup\Agent\Agent_Handler.ashx" />
+    <Content Include="Admin\assets\fonts\StardosStencil-Bold.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="DB_Code\Model1.Context.tt">
@@ -2317,6 +2321,16 @@
     </Compile>
     <Compile Include="Admin\Setup\AgentType\AgentType_Handler.ashx.cs">
       <DependentUpon>AgentType_Handler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Setup\Agent\Agent.aspx.cs">
+      <DependentUpon>Agent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Setup\Agent\Agent.aspx.designer.cs">
+      <DependentUpon>Agent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Setup\Agent\Agent_Handler.ashx.cs">
+      <DependentUpon>Agent_Handler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
