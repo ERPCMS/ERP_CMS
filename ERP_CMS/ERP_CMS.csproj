@@ -370,6 +370,12 @@
     <Content Include="Admin\assets\images\logo-blue.png" />
     <Content Include="Admin\assets\images\logo.png" />
     <Content Include="Admin\assets\images\poster.jpg" />
+    <Content Include="Admin\assets\jquery\scripts\jquery-1.11.3.min.js" />
+    <Content Include="Admin\assets\jquery\scripts\jquery-ui.js" />
+    <Content Include="Admin\assets\jquery\scripts\jquery-ui.min.js" />
+    <Content Include="Admin\assets\jquery\scripts\jquery.js" />
+    <Content Include="Admin\assets\jquery\styles\jquery-ui.css" />
+    <Content Include="Admin\assets\jquery\styles\jquery-ui.min.css" />
     <Content Include="Admin\assets\js\angular\app.js" />
     <Content Include="Admin\assets\js\angular\app.min.js" />
     <Content Include="Admin\assets\js\angular\router.js" />
@@ -2069,6 +2075,8 @@
     <Content Include="Admin\images\returned.png" />
     <Content Include="Admin\images\view.gif" />
     <Content Include="Admin\Logout.aspx" />
+    <Content Include="Admin\MainFile\MainFile.aspx" />
+    <Content Include="Admin\MainFile\WebForm1.aspx" />
     <Content Include="Admin\Rights\Default.aspx" />
     <Content Include="Admin\Settings\ChangePassword.aspx" />
     <Content Include="Admin\Setup\AgentType\AgentType.aspx" />
@@ -2271,6 +2279,20 @@
     </Compile>
     <Compile Include="Admin\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MainFile\MainFile.aspx.cs">
+      <DependentUpon>MainFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MainFile\MainFile.aspx.designer.cs">
+      <DependentUpon>MainFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MainFile\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MainFile\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Rights\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
